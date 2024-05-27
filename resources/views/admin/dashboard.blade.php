@@ -23,6 +23,8 @@
 
                         <a class="btn btn-dark my-4" href="{{ route('admin.projects.index') }}">My Projects</a>
                         <a class="btn btn-dark my-4" href="{{ route('admin.types.index') }}">Type of project</a>
+                        <a class="btn btn-dark my-4" href="{{ route('admin.technologies.index') }}">Technologies</a>
+
 
                     </div>
                 </div>

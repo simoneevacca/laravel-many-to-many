@@ -64,7 +64,7 @@
             @endforeach
 
 
-            
+
             <div class="mb-3">
                 <label for="link_view" class="form-label text-white">Link view</label>
                 <input type="text" name="link_view" id="link_view" class="form-control" placeholder=""
