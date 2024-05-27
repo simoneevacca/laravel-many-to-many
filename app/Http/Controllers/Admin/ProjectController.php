@@ -52,7 +52,10 @@ class ProjectController extends Controller
        
         // dd($val_data);
     
-        Project::create($val_data);
+        $project = Project::create($val_data);
+        if($request->has('technologies')){
+            $project->technoligies()->attach($val_data['technologies']);
+        }
         
         return to_route('admin.projects.index')->with('message', "New Project Created!");
     }
