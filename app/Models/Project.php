@@ -12,5 +12,9 @@ class Project extends Model
         return $this->belongsTo(Type::class);
     }
 
+    public function technoligies() {    
+        return $this->belongsToMany('App\Models\Technology');
+    }
+
     protected $fillable = ['project_name', 'slug', 'description', 'preview_image', 'link_view', 'link_code', 'type_id'];
 }
