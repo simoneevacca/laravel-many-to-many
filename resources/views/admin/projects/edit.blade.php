@@ -19,6 +19,8 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
 
+
+
             <div class="mb-3">
                 <label for="description" class="form-label text-white">Description</label>
                 <textarea class="form-control" name="description" id="description" rows="6">{{old('description', $project->description) }}</textarea>
@@ -26,6 +28,8 @@
             @error('description')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
+
+
 
             <div class="mb-3">
                 <label for="preview_image" class="form-label text-white">Image</label>
@@ -35,6 +39,8 @@
             @error('preview_image')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
+
+
 
             <div class="mb-3">
                 <label for="type_id" class="form-label text-white">Type</label>
@@ -47,6 +53,18 @@
                 </select>
             </div>
 
+
+            @foreach ($technologies as $technology)
+            <div class="form-check text-white">
+
+                <input name="technologies[]" class="form-check-input " type="checkbox" value="{{$technology->id}}" id="technology-{{$technology->id}}" {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} />
+                <label class="form-check-label" for="technology-{{$technology->id}}">{{$technology->name}} </label>
+
+            </div>
+            @endforeach
+
+
+            
             <div class="mb-3">
                 <label for="link_view" class="form-label text-white">Link view</label>
                 <input type="text" name="link_view" id="link_view" class="form-control" placeholder=""
@@ -56,6 +74,8 @@
                 <div class="text-danger">{{ $message }}</div>
             @enderror
 
+
+
             <div class="mb-3">
                 <label for="link_code" class="form-label text-white">Link code</label>
                 <input type="text" name="link_code" id="link_code" class="form-control" placeholder=""
@@ -64,6 +84,8 @@
             @error('link_code')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
+
+
 
             <button type="submit" class="btn btn-primary">
                 Save
