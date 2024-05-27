@@ -6,6 +6,7 @@ use App\Models\Technology;
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Validated;
 class TechnologyController extends Controller
 {
     /**
@@ -30,7 +31,11 @@ class TechnologyController extends Controller
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        $val_data = $request->validated();
+        // dd($val_data);
+
+        Technology::create($val_data);
+        return to_route('admin.technologies.index');
     }
 
     /**
@@ -54,7 +59,11 @@ class TechnologyController extends Controller
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
-        //
+        $val_data = $request->validated();
+        // dd($val_data);
+        $technology->update($val_data);
+        return to_route('admin.technologies.index');
+
     }
 
     /**
