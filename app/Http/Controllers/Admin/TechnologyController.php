@@ -17,8 +17,10 @@ class TechnologyController extends Controller
     public function index()
     {
         $technologies = Technology::all();
-
-        return view('admin.technologies.index', compact('technologies'));
+        $projects = Project::all();
+        $projectCount = Technology::withCount('projects')->get();
+        // dd($projectCount);
+        return view('admin.technologies.index', compact('technologies', 'projectCount'));
     }
 
     /**

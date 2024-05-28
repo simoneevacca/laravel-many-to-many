@@ -99,9 +99,9 @@ class ProjectController extends Controller
         // dd($val_data);
 
         if($request->has('technologies')) {
-            $project->technoligies()->sync($val_data['technologies']);
+            $project->technologies()->sync($val_data['technologies']);
         }  else {
-             $project->technoligies()->sync([]);
+             $project->technologies()->sync([]);
          }
 
         $project->update($val_data);

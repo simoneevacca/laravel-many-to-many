@@ -51,7 +51,14 @@
                                         </form>
                                     </td>
                                     <td></td>
-                                    <td></td>
+                                    <td>
+                                        @foreach ($projectCount as $project)
+                                            @if ($project->id == $technology->id)
+                                                {{ $project->projects_count }}
+                                            @endif
+                                        @endforeach
+                                        
+                                    </td>
                                     <td>
 
                                         <!-- Modal trigger button -->
