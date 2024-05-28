@@ -39,12 +39,14 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         $val_data = $request->validated();
-        // dd($val_data);
+        // dd($request);
         
         $slug = Str::slug($request->project_name, '-');
         $val_data['slug'] = $slug;
         
-        
+        // if (! $request->has('type')){
+           
+        // }
         if ($request->has('preview_image')) {
             $image_path = Storage::put('uploads', $val_data['preview_image']);
             $val_data['preview_image'] = $image_path;
@@ -75,7 +77,7 @@ class ProjectController extends Controller
     {
         $types = Type::all();
         $technologies = Technology::all();
-        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
+        return view('admin.projects.index', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -98,7 +100,9 @@ class ProjectController extends Controller
 
         if($request->has('technologies')) {
             $project->technoligies()->sync($val_data['technologies']);
-        }
+        }  else {
+             $project->technoligies()->sync([]);
+         }
 
         $project->update($val_data);
         return to_route('admin.projects.index', $project)->with('message', "$project->project_name has been updated");
