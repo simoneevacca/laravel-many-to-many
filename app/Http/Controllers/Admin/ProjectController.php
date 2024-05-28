@@ -77,7 +77,7 @@ class ProjectController extends Controller
     {
         $types = Type::all();
         $technologies = Technology::all();
-        return view('admin.projects.index', compact('project', 'types', 'technologies'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**

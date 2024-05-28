@@ -37,23 +37,23 @@
                             @forelse ($technologies as $technology)
                                 <tr class="">
                                     <td scope="row">{{ $technology->id }}</td>
-                                
+
                                     <td>
                                         <form action="{{ route('admin.technologies.update', $technology) }}" method="post">
                                             @csrf
                                             @method('PUT')
                                             <div class="mb-3">
-                                                
+
                                                 <input type="text" class="form-control" name="name" id="name"
-                                                    aria-describedby="helpId" placeholder=""
-                                                    value="{{ old('name', $technology->name) }}" placeholder="{{ $technology->name }}"/>
+                                                    aria-describedby="helpId"
+                                                    value="{{ old('name', $technology->name) }}" />
                                             </div>
                                         </form>
                                     </td>
                                     <td></td>
                                     <td></td>
                                     <td>
-                                    
+
                                         <!-- Modal trigger button -->
                                         <a class="btn btn-danger btn-sm"href="#"
                                             data-bs-toggle="modal"data-bs-target="#modalId-{{ $technology->id }}"><i
