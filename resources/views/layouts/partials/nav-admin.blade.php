@@ -18,6 +18,15 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ url('/') }}">{{ __('Home') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('admin.projects.index') }}">{{ __('Project') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('admin.types.index') }}">{{ __('Types') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('admin.technologies.index') }}">{{ __('Technology') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
