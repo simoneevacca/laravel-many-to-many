@@ -8,6 +8,7 @@ use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Str;
 
 class TechnologyController extends Controller
 {
@@ -38,6 +39,8 @@ class TechnologyController extends Controller
     {
         $val_data = $request->validated();
         // dd($val_data);
+        $slug = Str::slug($request->name, '-');
+        $val_data['slug'] = $slug;
 
         Technology::create($val_data);
         return to_route('admin.technologies.index');
@@ -66,6 +69,8 @@ class TechnologyController extends Controller
     {
         $val_data = $request->validated();
         // dd($val_data);
+        $slug = Str::slug($request->name, '-');
+        $val_data['slug'] = $slug;
         $technology->update($val_data);
         return to_route('admin.technologies.index');
 

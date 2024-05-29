@@ -13,5 +13,5 @@ class Technology extends Model
         return $this->belongsToMany('App\Models\Project');
     }
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'slug'];
 }

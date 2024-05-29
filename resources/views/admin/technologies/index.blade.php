@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container">
-        @include('admin.partials.validation-errors')
         <div class="row row-cols-2">
             <div class="col">
+                @include('admin.partials.validation-errors')
 
                 <form action="{{ route('admin.technologies.store') }}" method="post">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label text-white">Add new Technology</label>
-                        <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
-                            placeholder="" value="{{ old('name') }}" />
+                        <input type="text" class="form-control @error('name') is-invalid  @enderror" name="name"
+                            id="name" aria-describedby="helpId" placeholder="" value="{{ old('name') }}" />
                     </div>
                     <button type="submit" class="btn btn-primary">
                         Create
@@ -21,6 +21,7 @@
             </div>
 
             <div class="col ">
+                @include('admin.partials.validation-errors')
 
                 <div class="table-responsive">
                     <table class="table table-dark">
@@ -44,20 +45,20 @@
                                             @method('PUT')
                                             <div class="mb-3">
 
-                                                <input type="text" class="form-control" name="name" id="name"
-                                                    aria-describedby="helpId"
+                                                <input type="text" class="form-control @error('name') is-invalid  @enderror" name="name"
+                                                    id="name" aria-describedby="helpId"
                                                     value="{{ old('name', $technology->name) }}" />
                                             </div>
                                         </form>
                                     </td>
-                                    <td></td>
+                                    <td>{{ $technology->slug }}</td>
                                     <td>
                                         @foreach ($projectCount as $project)
                                             @if ($project->id == $technology->id)
                                                 {{ $project->projects_count }}
                                             @endif
                                         @endforeach
-                                        
+
                                     </td>
                                     <td>
 
