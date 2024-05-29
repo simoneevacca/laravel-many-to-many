@@ -59,7 +59,7 @@
                         @endif
 
                         <p><strong>Technologies:</strong>
-                            @foreach ($project->technoligies as $technology)
+                            @foreach ($project->technologies as $technology)
                                 {{ $technology->name }}
                             @endforeach
                         </p>
